@@ -1,6 +1,10 @@
 <?php
+    require_once "./funciones/validaSession.php";
     //llamar a verifica sesion
-
+    session_start();
+    if(validaSession()){
+        header("Location: ./paginas/menu.php");
+    }
     
 ?>
 
@@ -13,6 +17,13 @@
     <title>Login</title>
 </head>
 <body>
+    <header>
+        <h1>Menú</h1>
+        <?php
+            echo $_SESSION['nombre'];
+        ?>
+        <a href="./logout.php">Logout</a>
+    </header>
     <form action="./funciones/valida.php" method="post">
         <label for="user">Usuario</label><input type="text" name="user" id="user">
         <label for="pass">Contraseña</label><input type="password" name="pass" id="pass">

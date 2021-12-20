@@ -14,6 +14,6 @@
     echo "Ha cerrado la sesion"
 
 ?>
-    <a href="./login.php">Login</a>
+    <a href="../aplicacion/login.php">Login</a>
 </body>
 </html>

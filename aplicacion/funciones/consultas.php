@@ -17,6 +17,21 @@ function valida($user,$pass){
             $_SESSION['usuario']= $row['usuario'];
             $_SESSION['nombre']= $row['nombre'];
             $_SESSION['perfil']= $row['perfil'];
+
+            //paginas a las que tiene acceso
+            $sqlp =$con->prepare( "select descripcion,url
+            from paginas p join accede a on (p.codigo=a.codigoPagina)
+            where codigoPerfil = :perfil");
+            $sqlp->bindParam(":perfil",$_SESSION['perfil']);
+            $sqlp->execute();
+
+            $paginas = array();
+            while($row = $sqlp->fetch()){
+                $paginas[$row[0]]=$row[1];
+            }
+            $_SESSION['paginas']=$paginas;
+            
+            //cierre conexion
             unset($con);
             return true;
         }else{
