@@ -8,6 +8,6 @@
 </head>
 <body>
     <h1>Pagina Principal sin sesión</h1>
-    <a href="../aplicacion/login.php">Login</a>
+    <a href="./login.php">Login</a>
 </body>
 </html>
