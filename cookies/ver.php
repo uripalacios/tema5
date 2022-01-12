@@ -6,9 +6,31 @@ require_once "./funciones/consultas.php";
 
        if(!isset($_COOKIE['visitado'])){
            echo "no hay cookie";
-           setcookie('visitado',$codigo, time()+1254356,'/');
+           //cuando solo es una
+           //setcookie('visitado',$codigo, time()+1254356,'/');
+            //cuando son varias
+           setcookie('visitado[0]',$codigo, time()+1254356,'/');
        }else{
-            setcookie('visitado',$codigo, time()+1254356,'/');
+           //orden de las cookies
+           //contar las que hay
+           $arrayCookie = $_COOKIE['visitado'];
+           $numero = count($arrayCookie);
+           if(!in_array($codigo,$arrayCookie)){
+               if($numero<3){
+                    array_unshift($arrayCookie,$codigo);
+                    foreach ($arrayCookie as $key =>$value) {
+                        setcookie('visitado['.$key.']',$value, time()+1254356,'/');
+                    }
+               }else{
+                   //ordenar poniendo el primero el ultimo codigo
+                   array_unshift($arrayCookie,$codigo);
+                   array_pop($arrayCookie);
+                   foreach ($arrayCookie as $key =>$value) {
+                        setcookie('visitado['.$key.']',$value, time()+1254356,'/');
+                   }
+               }
+
+           }
        }
    }else{
        header('Location: index.php');
