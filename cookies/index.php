@@ -68,7 +68,6 @@
                 <h3>Ultimas visitas</h3>
                 <?php
                 foreach ($arrayVisitados as $producto) {
-                    # code...
                     echo $producto['nombre'].
                     "<br><img src='./".$producto["baja"] ."'>";
                     echo "<br>";
