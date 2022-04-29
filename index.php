@@ -9,5 +9,8 @@
 <body>
     <h1>Tema5</h1>
     <p><a href="./PR016/index.php">PR16</a></p>
+    <?php
+    header('WWW-Authenticate: Basic Realm="Contenido restringido"');
+    ?>
 </body>
 </html>
