@@ -10,9 +10,11 @@
     require("../seguro/datosBD.php");
     require("../funciones/consultas.php");
 
+    //guardamos en las variables los valores que nos llegan del formulario
     $user = $_REQUEST['user'];
     $pass = $_REQUEST['pass'];
 
+    //validamos si el usuario esta registrado y concuerda nombre y contraseña
     if(valida($user,$pass)){
         header("Location: ../paginas/menu.php");
     }
